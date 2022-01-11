@@ -33,6 +33,7 @@ if __name__ == "__main__":
     parser.add_argument("--sample_csv", type=str, default="../food_data/testcase/sample_submission_comm_track.csv", help="input directory")
     parser.add_argument("--output_csv", type=str, default="./output_common_track.csv", help="output csv")
     parser.add_argument("--model_path", type=str, default="./output/sample_run_checkpoint.bin", help="model path")
+    parser.add_argument("--normalize_weight", action="store_true")
 
     opt = parser.parse_args()
     print(opt)
@@ -42,12 +43,21 @@ if __name__ == "__main__":
                     transforms.CenterCrop((448, 448)),
                     transforms.ToTensor(),
                     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
-    
+
     #define the model and load the checkpoint
     config = CONFIGS['ViT-B_16']
     model = VisionTransformer(config, 448, zero_head=True, num_classes=1000)
     model = model.cuda()
     model.load_state_dict(torch.load(opt.model_path)['model'])
+
+    if opt.normalize_weight:
+        weight = model.part_head.weight.data
+        denominator = torch.sqrt(torch.sum(weight ** 2, dim = 1))
+        denominator.unsqueeze_(1)
+        denominator = denominator.repeat(1, 768)
+        new_weight = weight / denominator
+        model.part_head.weight = nn.Parameter(new_weight)
+    model.eval()
 
     #define the dataset
     test_dataset = ImageDataset(opt.input_dir, opt.sample_csv, test_transform)
@@ -65,7 +75,7 @@ if __name__ == "__main__":
         output = model(img)
         pred = output.argmax(dim = 1).item()
         pred_labels.append(pred)
-    
+
     output_df['image_id'] = test_dataset.image_ids
     output_df['label'] = pred_labels
     output_df.to_csv(opt.output_csv, index=False)
