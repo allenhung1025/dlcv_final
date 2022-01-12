@@ -68,3 +68,5 @@ If you find our work helpful in your research, please cite it as:
 
 Many thanks to [ViT-pytorch](https://github.com/jeonsworld/ViT-pytorch) for the PyTorch reimplementation of [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
 
+
+## Approach 1: Bert embedding as cls token
