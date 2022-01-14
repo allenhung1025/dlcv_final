@@ -85,12 +85,17 @@ def setup(args):
     elif args.dataset == "food":
         num_classes = 1000
 
-    model = VisionTransformer(config, args.img_size, zero_head=True, num_classes=num_classes,                                                   smoothing_value=args.smoothing_value)
+    model = VisionTransformer(config, args.img_size, zero_head=True, num_classes=num_classes, smoothing_value=args.smoothing_value)
 
     model.load_from(np.load(args.pretrained_dir))
     if args.pretrained_model is not None:
         pretrained_model = torch.load(args.pretrained_model)['model']
         model.load_state_dict(pretrained_model)
+
+    if args.freeze:
+        for p in model.transformer.parameters():
+            p.requires_grad = False
+            
     model.to(args.device)
     num_params = count_parameters(model)
 
@@ -353,6 +358,12 @@ def main():
                              "0 (default value): dynamic loss scaling.\n"
                              "Positive power of 2: static loss scaling value.\n")
 
+    parser.add_argument('--balanced', type=int, default=0,
+                        help="Use balanced sampler or not \n")
+    
+    parser.add_argument('--freeze'  , type=int, default=0,
+                        help="freeze feature extractor or not")
+    
     parser.add_argument('--smoothing_value', type=float, default=0.0,
                         help="Label smoothing value\n")
 

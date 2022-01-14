@@ -3,3 +3,10 @@
 # folder with the same name as the one specified below!
 
 food_data/*
+.ipynb_checkpoints/*
+TransFG/models/__pycache__/*
+TransFG/utils/.ipynb_checkpoints/*
+TransFG/utils/__pycache__/*
+TransFG/.ipynb_checkpoints/*
+TransFG/.gitignore
+TransFG/models/.ipynb_checkpoints/*

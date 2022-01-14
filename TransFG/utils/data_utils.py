@@ -4,13 +4,17 @@ import os
 
 import torch
 
-from torchvision import transforms
-from torch.utils.data import DataLoader, RandomSampler, DistributedSampler, SequentialSampler
+from torchvision           import transforms
+from torch.utils.data      import DataLoader, RandomSampler, DistributedSampler, SequentialSampler
+from catalyst.data.sampler import DistributedSamplerWrapper
+from torchsampler          import ImbalancedDatasetSampler
 
 from .dataset import CUB, CarsDataset, NABirds, dogs, INat2017, food
 from .autoaugment import AutoAugImageNetPolicy
 
 logger = logging.getLogger(__name__)
+
+
 
 
 def get_loader(args):
@@ -117,9 +121,10 @@ def get_loader(args):
     if args.local_rank == 0:
         torch.distributed.barrier()
 
-    train_sampler = RandomSampler(trainset) if args.local_rank == -1 else DistributedSampler(trainset)
-    test_sampler = SequentialSampler(testset) if args.local_rank == -1 else DistributedSampler(testset)
-    train_loader = DataLoader(trainset,
+    train_sampler = ImbalancedDatasetSampler(trainset) if args.balanced else RandomSampler(trainset)
+    train_sampler = train_sampler if args.local_rank == -1 else DistributedSamplerWrapper(train_sampler)
+    test_sampler  = SequentialSampler(testset) if args.local_rank == -1 else DistributedSampler(testset)
+    train_loader  = DataLoader(trainset,
                               sampler=train_sampler,
                               batch_size=args.train_batch_size,
                               num_workers=4,
