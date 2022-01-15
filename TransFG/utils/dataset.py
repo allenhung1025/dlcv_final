@@ -42,14 +42,16 @@ class food(Dataset):
         else:
             image_classes = [i for i in range(1000)]
             image_classes_chinese = label2name_df[2].tolist() 
+            image_types = label2name_df[1].tolist()
 
         #self.image_files [[image_path, label, chinese_label], ...]
         directory = os.path.join(root, mode)
-        for image_cls, image_cls_chinese in zip(image_classes, image_classes_chinese):
+        for i, (image_cls, image_cls_chinese) in enumerate(zip(image_classes, image_classes_chinese)):
             image_cls_dir = os.path.join(directory, str(image_cls))
+            img_type = image_types[i]
             for image in os.listdir(image_cls_dir):
                 image_file = os.path.join(image_cls_dir, image)
-                self.image_files.append([image_file, image_cls, image_cls_chinese])
+                self.image_files.append([image_file, image_cls, image_cls_chinese, img_type])
                 
     def get_labels(self):
         return [int(image_file[1]) for image_file in self.image_files]
@@ -61,7 +63,8 @@ class food(Dataset):
         img = self.transform(img)
         label = self.image_files[idx][1]
         chinese_label = self.image_files[idx][2]
-        return {'img':img, 'label':label, 'chinese_label':chinese_label}
+        img_type = self.image_files[idx][3]
+        return {'img':img, 'label':label, 'chinese_label':chinese_label, "type": img_type}
 
     def __len__(self):
         return len(self.image_files)
