@@ -50,6 +50,9 @@ class food(Dataset):
             for image in os.listdir(image_cls_dir):
                 image_file = os.path.join(image_cls_dir, image)
                 self.image_files.append([image_file, image_cls, image_cls_chinese])
+                
+    def get_labels(self):
+        return [int(image_file[1]) for image_file in self.image_files]
 
 
     def __getitem__(self, idx):
