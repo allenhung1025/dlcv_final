@@ -13,21 +13,21 @@ pip install -v --no-cache-dir ./
 ```
 - estimated training hours
 ```
-    15 hours on four GTX-1080Ti GPU.
+15 hours on four GTX-1080Ti GPU.
 ```
 - Training
 ```
-    bash download_vit.sh
-    bash train.sh $1 $2
-    $1 is the directory of the food dataset
-    $2 is the directory to store the checkpoint
+bash download_vit.sh
+bash train.sh $1 $2
+$1 is the directory of the food dataset
+$2 is the directory to store the checkpoint
 ```
 - Inference
 ```
-    bash test_main_track.sh $1 $2 $3
-    $1 sample_submission.csv
-    $2 output.csv
-    $3 model path
+bash test_main_track.sh $1 $2 $3
+$1 sample_submission.csv
+$2 output.csv
+$3 model path
 ```
 ## Multi-task
 - Training
