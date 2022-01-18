@@ -8,7 +8,9 @@
 ## TransFG (Baseline)
     cd TransFG/
 - estimated training hours
+```
     15hours on four GTX-1080Ti GPU.
+```
 - Training
 ```
     bash download_vit.sh
