@@ -22,7 +22,7 @@ cd ..
 ```
 15 hours on four GTX-1080Ti GPU.
 ```
-- Training
+- Training (use 4 GPUs)
 ```
 bash download_vit.sh
 bash train.sh $1 $2
@@ -33,7 +33,7 @@ $2 is the directory to store the checkpoint (e.g. ./output)
 ```
 bash download_baseline.sh
 ```
-- Inference
+- Inference (use single GPU)
 ```
 bash test_main_track.sh $1 $2 $3
 $1 is the sample submission file (e.g. sample_submission_main_track.csv)
@@ -42,7 +42,7 @@ $3 is the path of model chekpoint (e.g. ./model.bin)
 ```
 ## Multi-task
     cd TransFG_Multitask/
-- Training
+- Training (use 4 GPUs)
 ```
 bash ./train.sh $1 $2 $3 $4
 $1 is the directory of the food dataset (e.g. ./food_data) 
@@ -54,7 +54,7 @@ $4 is the output name of the checkpoint (e.g. multitask)
 ```
 bash ./download.sh
 ```
-- Inference
+- Inference (use single GPU)
 ```
 bash ./test.sh $1 $2 $3
 $1 is the sample submission file (e.g. sample_submission_main_track.csv)
