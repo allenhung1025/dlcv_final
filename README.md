@@ -12,6 +12,7 @@
 ```
 cd apex/
 pip install -v --no-cache-dir ./
+cd ..
 ```
 - estimated training hours
 ```
