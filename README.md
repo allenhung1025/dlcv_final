@@ -4,8 +4,26 @@
 > TODO: Please provide example scripts to run your code. For example, 
 > 1. python3 preprocessing.py <Path to Blood_data>
 > 2. python3 inference.py <Path to the output csv file>
-> ...
 
+## TransFG (Baseline)
+- Training
+- Inference
+    
+## Multi-task
+- Training
+- Inference
+
+## 3-stage training
+- Training
+- Inference
+
+## CLIP-based method
+- Training
+- Inference
+    
+## Cls token method
+- Training
+- Inference
     
 # Usage
 To start working on this final project, you should clone this repository into your local machine by using the following command:
