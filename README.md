@@ -38,7 +38,7 @@ bash download_baseline.sh
 bash test_main_track.sh $1 $2 $3
 $1 is the sample submission file (e.g. sample_submission_main_track.csv)
 $2 is the path of output csv file (e.g. output.csv)
-$3 is the path of model chekpoint (e.g. ./model.bin)
+$3 is the path of model chekpoint (e.g. ./sample_run_checkpoint.bin)
 ```
 ## Multi-task
     cd TransFG_Multitask/
@@ -46,7 +46,7 @@ $3 is the path of model chekpoint (e.g. ./model.bin)
 ```
 bash ./train.sh $1 $2 $3 $4
 $1 is the directory of the food dataset (e.g. ./food_data) 
-$2 is the path of pretrained model checkpoint (e.g. ./pretrained.bin)
+$2 is the path of pretrained model checkpoint (e.g. ./sample_run_checkpoint.bin)
 $3 is the directory to store the checkpoint (e.g. ./output)
 $4 is the output name of the checkpoint (e.g. multitask)
 ```
@@ -59,6 +59,6 @@ bash ./download.sh
 bash ./test.sh $1 $2 $3
 $1 is the sample submission file (e.g. sample_submission_main_track.csv)
 $2 is the path of output csv file (e.g. output.csv)
-$3 is the path of model chekpoint (e.g. ./pretrained.bin)
+$3 is the path of model chekpoint (e.g. ./final_multitask.bin)
 ```
 
