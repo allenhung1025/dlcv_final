@@ -7,6 +7,10 @@
 
 ## TransFG (Baseline)
     cd TransFG/
+- Install apex
+```
+pip install -v --no-cache-dir ./
+```
 - estimated training hours
 ```
     15 hours on four GTX-1080Ti GPU.
