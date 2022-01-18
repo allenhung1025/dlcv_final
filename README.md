@@ -9,7 +9,7 @@
     cd TransFG/
 - estimated training hours
 ```
-    15hours on four GTX-1080Ti GPU.
+    15 hours on four GTX-1080Ti GPU.
 ```
 - Training
 ```
