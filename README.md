@@ -9,6 +9,7 @@
     cd TransFG/
 - Install apex
 ```
+cd apex/
 pip install -v --no-cache-dir ./
 ```
 - estimated training hours
@@ -19,8 +20,8 @@ pip install -v --no-cache-dir ./
 ```
 bash download_vit.sh
 bash train.sh $1 $2
-$1 is the directory of the food dataset
-$2 is the directory to store the checkpoint
+$1 is the directory of the food dataset (e.g. ./food_data)
+$2 is the directory to store the checkpoint (e.g. ./output)
 ```
 - Download checkpoint
 ```
@@ -29,25 +30,32 @@ bash download_baseline.sh
 - Inference
 ```
 bash test_main_track.sh $1 $2 $3
-$1 sample_submission.csv
-$2 output.csv
-$3 model path
+$1 is the sample submission file (e.g. sample_submission_main_track.csv)
+$2 is the path of output csv file (e.g. output.csv)
+$3 is the path of model chekpoint (e.g. ./model.bin)
 ```
 ## Multi-task
+    cd TransFG_Multitask/
 - Training
+```
+bash ./train.sh $1 $2 $3 $4
+$1 is the directory of the food dataset (e.g. ./food_data) 
+$2 is the path of pretrained model checkpoint (e.g. ./pretrained.bin)
+$3 is the directory to store the checkpoint (e.g. ./output)
+$4 is the output name of the checkpoint (e.g. multitask)
+```
+- Download checkpoint
+```
+bash ./download.sh
+```
 - Inference
+```
+bash ./test.sh $1 $2 $3
+$1 is the sample submission file (e.g. sample_submission_main_track.csv)
+$2 is the path of output csv file (e.g. output.csv)
+$3 is the path of model chekpoint (e.g. ./pretrained.bin)
+```
 
-## 3-stage training
-- Training
-- Inference
-
-## CLIP-based method
-- Training
-- Inference
-    
-## Cls token method
-- Training
-- Inference
     
 # Usage
 To start working on this final project, you should clone this repository into your local machine by using the following command:
