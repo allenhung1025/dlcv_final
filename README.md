@@ -6,6 +6,7 @@
 > 2. python3 inference.py <Path to the output csv file>
 
 ## TransFG (Baseline)
+    cd TransFG/
 - Training
 - Inference
     
