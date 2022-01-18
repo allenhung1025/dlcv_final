@@ -9,4 +9,14 @@ TransFG/utils/.ipynb_checkpoints/*
 TransFG/utils/__pycache__/*
 TransFG/.ipynb_checkpoints/*
 TransFG/.gitignore
+TransFG/models/.ipynb_checkpoints/i*
+TransFG_Multitask/*.bin
+TransFG_Multitask/output/*
 TransFG/models/.ipynb_checkpoints/*
+TransFG_Multitask/utils/__pycache__/*
+TransFG_Multitask/utils/.ipynb_checkpoints/*
+TransFG_Multitask/models/__pycache__/*
+TransFG_Multitask/logs/*
+TransFG_Multitask/__pycache__/*
+TransFG_Multitask/.ipynb_checkpoints/*
+TransFG_Multitask/models/.ipynb_checkpoints/*
