@@ -22,6 +22,10 @@ bash train.sh $1 $2
 $1 is the directory of the food dataset
 $2 is the directory to store the checkpoint
 ```
+- Download checkpoint
+```
+bash download_baseline.sh
+```
 - Inference
 ```
 bash test_main_track.sh $1 $2 $3
