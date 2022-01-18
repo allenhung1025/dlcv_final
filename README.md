@@ -4,7 +4,8 @@
 > TODO: Please provide example scripts to run your code. For example, 
 > 1. python3 preprocessing.py <Path to Blood_data>
 > 2. python3 inference.py <Path to the output csv file>
-
+## Install packages
+    pip install -r requirements.txt
 ## TransFG (Baseline)
     cd TransFG/
 - Install apex
