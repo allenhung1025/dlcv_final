@@ -17,7 +17,7 @@ class ImageDataset(Dataset):
 	csv_file, sample_submission csv file
         """
 
-        self.transform = transforms.Compose(transforms_)
+        self.transform = transforms_
         self.image_files = [] 
 
         # retrive the image labels from freq, common or rare.
