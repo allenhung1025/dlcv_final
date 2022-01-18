@@ -17,11 +17,12 @@
     $2 is the directory to store the checkpoint
 ```
 - Inference
+```
     bash test_main_track.sh $1 $2 $3
     $1 sample_submission.csv
     $2 output.csv
     $3 model path
-
+```
 ## Multi-task
 - Training
 - Inference
