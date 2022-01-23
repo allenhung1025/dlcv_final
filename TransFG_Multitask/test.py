@@ -46,7 +46,7 @@ if __name__ == "__main__":
     #define the model and load the checkpoint
     config = CONFIGS['ViT-B_16']
     model = VisionTransformer(config, 448, zero_head=True, num_classes=1000)
-    model.load_state_dict(torch.load(opt.model_path, map_location='cpu')['model'])
+    model.load_state_dict(torch.load(opt.model_path, map_location='cpu')['model'], strict=False)
     model = model.cuda()
     for p in model.parameters():
         p.requires_grad = False
