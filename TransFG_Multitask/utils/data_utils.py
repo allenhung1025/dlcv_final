@@ -32,8 +32,8 @@ def get_loader(args):
                                 transforms.CenterCrop((448, 448)),
                                 transforms.ToTensor(),
                                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
-    trainset = food(args.data_root , '../food_data/label2name.txt', train_transform, mode="train", image_type="all") 
-    testsets = {image_type: food(args.data_root, '../food_data/label2name.txt',  test_transform, mode='val'  , image_type=image_type) for image_type in ['r', 'c', 'f']}        
+    trainset = food(args.data_root , os.path.join(args.data_root, 'label2name.txt'), train_transform, mode="train", image_type="all") 
+    testsets = {image_type: food(args.data_root, os.path.join(args.data_root, 'label2name.txt'),  test_transform, mode='val'  , image_type=image_type) for image_type in ['r', 'c', 'f']}        
 
 
     if args.local_rank == 0:

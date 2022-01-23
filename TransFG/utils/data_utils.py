@@ -32,8 +32,8 @@ def get_loader(args):
                                     transforms.CenterCrop((448, 448)),
                                     transforms.ToTensor(),
                                     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])]
-        trainset = food(args.data_root, "../food_data/label2name.txt", train_transform, mode="train", image_type="all") 
-        testset = food(args.data_root, "../food_data/label2name.txt", test_transform, mode="val", image_type="all") 
+        trainset = food(args.data_root, os.path.join(args.data_root, "label2name.txt"), train_transform, mode="train", image_type="all") 
+        testset = food(args.data_root, os.path.join(args.data_root, "label2name.txt"), test_transform, mode="val", image_type="all") 
 
     elif args.dataset == 'CUB_200_2011':
         train_transform=transforms.Compose([transforms.Resize((600, 600), Image.BILINEAR),

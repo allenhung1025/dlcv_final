@@ -299,7 +299,7 @@ def train(args, model):
                 if global_step % args.eval_every == 0:
                     with torch.no_grad():
                         total   = 0 
-                        cur_acc = {'all': 0, 'r': 0, 'c': 0, 'r': 0}
+                        cur_acc = {'all': 0, 'f': 0, 'c': 0, 'r': 0}
                         for image_type, test_loader in test_loaders.items():
                             acc, number     = valid(args, model, writer, test_loader, global_step, image_type)
                             total          += number
